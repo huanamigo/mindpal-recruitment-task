@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "type": "Request",
+    "message": "New Request",
+    "read": false
+  },
+  {
+    "id": "2",
+    "type": "StatusChange",
+    "message": "Status Changed to On Hold",
+    "read": false
+  },
+  {
+    "id": "3",
+    "type": "NewFeature",
+    "message": "New Feature Released",
+    "read": false
+  }
+]
