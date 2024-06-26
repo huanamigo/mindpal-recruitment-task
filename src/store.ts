@@ -5,8 +5,19 @@ interface NotificationsState {
   notifications: NotificationType[];
 }
 
+const LOCAL_STORAGE_KEY = 'notifications';
+
+// local storage
+const loadNotifications = (): NotificationType[] => {
+  const notificationsJson = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (notificationsJson) {
+    return JSON.parse(notificationsJson) as NotificationType[];
+  }
+  return [];
+};
+
 const initialState: NotificationsState = {
-  notifications: [],
+  notifications: loadNotifications(),
 };
 
 const notificationsSlice = createSlice({
@@ -19,22 +30,32 @@ const notificationsSlice = createSlice({
       );
       if (!existingNotification) {
         state.notifications.push(action.payload);
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          JSON.stringify(state.notifications)
+        );
       }
     },
-
     markAsRead(state, action: PayloadAction<string>) {
       const notification = state.notifications.find(
         (notification) => notification.id === action.payload
       );
       if (notification) {
         notification.read = true;
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          JSON.stringify(state.notifications)
+        );
       }
     },
-
     markAllAsRead(state) {
       state.notifications.forEach((notification) => {
         notification.read = true;
       });
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify(state.notifications)
+      );
     },
   },
 });

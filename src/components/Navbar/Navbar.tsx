@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import NotificationsModal from '../NotificationModal/NotificationModal';
+import NotificationsModal from '../NotificationModal/NotificationModal.tsx';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
@@ -16,7 +16,11 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      {showModal && <NotificationsModal onClose={() => setShowModal(false)} />}
+      <div className={styles.modalWrapper}>
+        {showModal && (
+          <NotificationsModal onClose={() => setShowModal(false)} />
+        )}
+      </div>
 
       <div onClick={() => setShowModal(!showModal)}>
         <div className={styles.bellWrapper}>

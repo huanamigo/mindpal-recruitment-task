@@ -1,5 +1,6 @@
 @import './variables.scss';
 
 .container {
-  background-color: black;
+  background-color: $defaultBackground;
+  height: 100vh;
 }

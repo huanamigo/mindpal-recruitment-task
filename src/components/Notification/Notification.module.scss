@@ -1,0 +1,42 @@
+@import '../../variables.scss';
+
+.notification {
+  border-radius: 15px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.imageWrapper {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    display: block;
+    background-color: $mainColor;
+    border-radius: 50%;
+    padding: 0.5rem;
+    height: 3rem;
+  }
+}
+
+.messageWrapper {
+  margin: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .time {
+    color: #7f89a0;
+  }
+}
+
+.read {
+  background-color: #f3f3f7;
+}
+
+.unread {
+  background-color: white;
+}

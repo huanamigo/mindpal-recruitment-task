@@ -1,3 +1,4 @@
+import styles from './NotificationModal.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../store';
 import { markAllAsRead } from '../../store';
@@ -18,16 +19,19 @@ const NotificationsModal = ({ onClose }: NotificationsModalProps) => {
   };
 
   return (
-    <div>
+    <div className={styles.modal}>
       <button onClick={onClose}>Close</button>
       <button onClick={handleMarkAllAsRead}>Mark all as read</button>
       <div>
         <h2>All Notifications</h2>
-        <ul>
-          {notifications.map((notification) => (
-            <Notification key={notification.id} notification={notification} />
-          ))}
-        </ul>
+        <div>
+          {notifications
+            .slice(0)
+            .reverse()
+            .map((notification) => (
+              <Notification key={notification.id} notification={notification} />
+            ))}
+        </div>
       </div>
     </div>
   );

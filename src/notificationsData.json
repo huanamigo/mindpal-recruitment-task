@@ -1,20 +1,44 @@
 [
   {
     "id": "1",
-    "type": "Request",
-    "message": "New Request",
-    "read": false
+    "type": "request",
+    "message": "Jan Nowak from MindPal has requested a Mindocument for their project Minddev",
+    "read": false,
+    "time": "2024-06-24T22:21:36.387Z"
   },
   {
     "id": "2",
-    "type": "StatusChange",
-    "message": "Status Changed to On Hold",
-    "read": false
+    "type": "new-feature",
+    "message": "We Have launched new product!",
+    "read": false,
+    "time": "2024-06-24T21:21:36.387Z"
   },
   {
     "id": "3",
-    "type": "NewFeature",
-    "message": "New Feature Released",
-    "read": false
+    "type": "new-feature",
+    "message": "New MindTool feature: AI Assistant",
+    "read": false,
+    "time": "2024-06-24T20:21:36.387Z"
+  },
+  {
+    "id": "4",
+    "type": "status-change",
+    "message": "Nickolas Stephens from MindPal has deleted their project SFxGliwice",
+    "read": true,
+    "time": "2024-06-25T21:21:36.387Z"
+  },
+  {
+    "id": "5",
+    "type": "status-change",
+    "message": "Gregory Jones from MindPal has their project Project 123 on hold",
+    "read": true,
+    "time": "2024-06-25T22:21:36.387Z"
+  },
+  {
+    "id": "6",
+    "type": "request",
+    "message": "Lucy Gale from MindPal has requested",
+    "read": true,
+    "time": "2024-06-25T23:21:36.387Z"
   }
 ]

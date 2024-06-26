@@ -1,15 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface NotificationProp {
-  id: string;
-  type: 'Request' | 'StatusChange' | 'NewFeature';
-  message: string;
-  read: boolean;
-  link: string;
-}
+import { NotificationType } from '../../types';
 
 export interface NotificationsState {
-  notifications: NotificationProp[];
+  notifications: NotificationType[];
 }
 
 const initialState: NotificationsState = {
@@ -20,7 +13,7 @@ const notificationsSlice = createSlice({
   name: 'notifications',
   initialState,
   reducers: {
-    addNotification(state, action: PayloadAction<NotificationProp>) {
+    addNotification(state, action: PayloadAction<NotificationType>) {
       state.notifications.push(action.payload);
     },
     markAsRead(state, action: PayloadAction<string>) {

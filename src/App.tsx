@@ -2,38 +2,37 @@ import { useDispatch } from 'react-redux';
 import { addNotification } from './store';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
+import notificationsData from './notificationsData.json';
+import { NotificationType } from './types';
+import styles from './App.module.scss';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(
-      addNotification({
-        id: '1',
-        type: 'request',
-        message: 'New request received',
-        read: false,
-      })
-    );
-    dispatch(
-      addNotification({
-        id: '2',
-        type: 'status_change',
-        message: 'Status changed to on hold',
-        read: false,
-      })
-    );
-    dispatch(
-      addNotification({
-        id: '3',
-        type: 'new_feature',
-        message: 'New feature added',
-        read: false,
-      })
-    );
+    const existingNotifications = JSON.parse(
+      localStorage.getItem('notifications') || '[]'
+    ) as NotificationType[];
+
+    if (existingNotifications.length === 0) {
+      notificationsData.forEach((notification) => {
+        const typedNotification: NotificationType = {
+          ...notification,
+          type: notification.type as
+            | 'request'
+            | 'status-change'
+            | 'new-feature',
+        };
+        dispatch(addNotification(typedNotification));
+      });
+    }
   }, [dispatch]);
 
-  return <Navbar />;
+  return (
+    <div className={styles.container}>
+      <Navbar />;
+    </div>
+  );
 };
 
 export default App;
