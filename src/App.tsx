@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import notificationsData from './notificationsData.json';
 import { NotificationType } from './types';
 import styles from './App.module.scss';
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,23 +15,27 @@ const App = () => {
       localStorage.getItem('notifications') || '[]'
     ) as NotificationType[];
 
-    if (existingNotifications.length === 0) {
-      notificationsData.forEach((notification) => {
-        const typedNotification: NotificationType = {
-          ...notification,
-          type: notification.type as
-            | 'request'
-            | 'status-change'
-            | 'new-feature',
-        };
+    notificationsData.forEach((notification) => {
+      const typedNotification: NotificationType = {
+        ...notification,
+        type: notification.type as 'request' | 'status-change' | 'new-feature',
+      };
+
+      const notificationExists = existingNotifications.some(
+        (existingNotification) =>
+          existingNotification.id === typedNotification.id
+      );
+
+      if (!notificationExists) {
         dispatch(addNotification(typedNotification));
-      });
-    }
+      }
+    });
   }, [dispatch]);
 
   return (
     <div className={styles.container}>
-      <Navbar />;
+      <Navbar />
+      <Outlet />
     </div>
   );
 };

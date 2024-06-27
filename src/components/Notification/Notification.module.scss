@@ -5,38 +5,53 @@
   margin: 0.5rem;
   padding: 0.5rem;
   display: flex;
-}
+  cursor: pointer;
+  position: relative;
 
-.imageWrapper {
-  margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    display: block;
-    background-color: $mainColor;
-    border-radius: 50%;
-    padding: 0.5rem;
-    height: 3rem;
+  .imageWrapper {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      display: block;
+      border-radius: 50%;
+      padding: 0.7rem;
+      height: 3rem;
+    }
   }
-}
 
-.messageWrapper {
-  margin: 5px;
+  .messageWrapper {
+    margin: 10px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  .time {
-    color: #7f89a0;
+    .time {
+      color: #7f89a0;
+    }
+  }
+
+  .readIndicator {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 0.5rem;
+    right: 0.5rem;
+    border-radius: 50%;
+    background-color: $mainColor;
+  }
+
+  .hidden {
+    display: none;
   }
 }
 
 .read {
-  background-color: #f3f3f7;
+  background-color: white;
 }
 
 .unread {
-  background-color: white;
+  background-color: $gray;
 }

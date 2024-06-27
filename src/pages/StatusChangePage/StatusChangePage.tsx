@@ -1,7 +1,9 @@
+import styles from './StatusChangePage.module.scss';
+
 const StatusChangePage = () => {
   return (
-    <div>
-      <p>StatusChangePage</p>
+    <div className={styles.container}>
+      <p>There will be a page corresponding to Status Change Notification</p>
     </div>
   );
 };

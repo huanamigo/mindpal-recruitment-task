@@ -7,7 +7,6 @@ interface NotificationsState {
 
 const LOCAL_STORAGE_KEY = 'notifications';
 
-// local storage
 const loadNotifications = (): NotificationType[] => {
   const notificationsJson = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (notificationsJson) {
@@ -30,9 +29,10 @@ const notificationsSlice = createSlice({
       );
       if (!existingNotification) {
         state.notifications.push(action.payload);
+        const updatedNotifications = [...state.notifications];
         localStorage.setItem(
           LOCAL_STORAGE_KEY,
-          JSON.stringify(state.notifications)
+          JSON.stringify(updatedNotifications)
         );
       }
     },

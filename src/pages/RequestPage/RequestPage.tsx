@@ -1,7 +1,9 @@
+import styles from './RequestPage.module.scss';
+
 const RequestPage = () => {
   return (
-    <div>
-      <p>RequestPage</p>
+    <div className={styles.container}>
+      <p>There will be a page corresponding to New Request Notification</p>
     </div>
   );
 };

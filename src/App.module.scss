@@ -1,6 +1,6 @@
 @import './variables.scss';
 
 .container {
+  min-height: 100vh;
   background-color: $defaultBackground;
-  height: 100vh;
 }
